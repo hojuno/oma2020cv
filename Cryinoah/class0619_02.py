@@ -1,0 +1,7 @@
+print(2+7)
+print(10-3)
+print(72/9)
+print(3*15)
+print(3**3)
+print(28%5)
+print(28//5)
