@@ -8,7 +8,7 @@ def parseTerms(side):                                #항을 추출하는 함수
         if side[i] == '+' or side[i] == '-':         #문자가 + 또는 -일 때
             term = side[breakpoint:i]                #마지막으로 잘라낸 위치에서부터 앞 문자까지 잘라냄
             term.replace('+', '')                    #앞에 붙은 +는 삭제
-            if term is not '':                       #공백이 아니라면
+            if term != '':                       #공백이 아니라면
                 terms.append(term)                   #하나의 항으로 저장
             breakpoint = i                           #현재 위치를 잘라낸 위치로 저장
     terms.append(side[breakpoint:])                  #마지막 항 저장
