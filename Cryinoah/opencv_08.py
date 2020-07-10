@@ -52,7 +52,7 @@ def merge5(f1, f2, height=0):
         f1_resized = f1
         f2_resized = f2
     else:
-        width = height/f1.shape[0]*f1.shape[1]
+        width = int(height/f1.shape[0]*f1.shape[1])
         f1_resized = cv2.resize(f1, (width, height), interpolation=cv2.INTER_CUBIC)
         f2_resized = cv2.resize(f2, (width, height), interpolation=cv2.INTER_CUBIC)
     new_frame = np.zeros((height, width*2, 3), dtype=np.uint8)
@@ -66,11 +66,11 @@ while cap_1.isOpened() and cap_2.isOpened():
     ret, frame_2 = cap_2.read()
     frame_2 = cv2.resize(frame_2, (frame_1.shape[1], frame_1.shape[0]), interpolation=cv2.INTER_CUBIC)
     # https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation
-    merged_frame = merge1(frame_1, frame_2, 0.5)
-    # merged_frame = merge2(frame_1, frame_2, greater=False)
+    # merged_frame = merge1(frame_1, frame_2, 0.5)
+    # merged_frame = merge2(frame_1, frame_2, greater=True)
     # merged_frame = merge3(frame_1, frame_2, greater=True)
-    # merged_frame = merge4(frame_1, frame_2, filter_type=0)
-    # merged_frame = merge5(frame_1, frame_2)
+    # merged_frame = merge4(frame_1, frame_2, filter_type=1)
+    merged_frame = merge5(frame_1, frame_2, height=400)
     cv2.imshow('window', merged_frame)
     if cv2.waitKey(1) == ord('q'):
         break
